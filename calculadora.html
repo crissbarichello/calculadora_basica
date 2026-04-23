@@ -1,0 +1,70 @@
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora</title>
+    <script>
+        
+        function calcular(operador) {
+            const num1 = Number(document.getElementById("num1").value);
+            const num2 = Number(document.getElementById("num2").value);
+            
+            let resultado;
+
+            if (operador === 'soma') {
+                resultado = num1 + num2;
+            } else if (operador === 'subtracao') {
+                resultado = num1 - num2;
+            } else if (operador === 'dividir'){
+                resultado = num1 / num2;
+            } else if (operador === 'multiplicacao'){
+                resultado = num1 * num2 ;
+            } else{
+                resultado = "Operação inválida.";
+            }
+
+            document.getElementById("resultado").innerHTML = "Resultado: " + resultado;
+        }
+    </script>
+</head>
+
+<body>
+    <table align="center" border="solid">
+        <tr>
+            <td>
+                <h1>Calculadora</h1>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Insira os números e selecione a operação:</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="number" id="num1" placeholder="Número 1">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="number" id="num2" placeholder="Número 2">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button id="somar" onclick="calcular('soma')">Somar</button>
+                <button id="subtrair" onclick="calcular('subtracao')">Subtrair</button>
+                <button id="dividir" onclick="calcular('dividir')">Dividir</button>
+                <button id="multiplicacao" onclick="calcular('multiplicacao')">Multiplicação</button>
+            </td>                
+        </tr>
+        <tr>
+            <td>
+                <div id="resultado" ><p>Resultado aparecerá aqui.</p></div>
+            </td>
+        </tr>
+        </div>
+    </table>
+</body>
+
+</html>
