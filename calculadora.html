@@ -4,27 +4,57 @@
     <meta charset="UTF-8">
     <title>Calculadora</title>
     <script>
-        
-        function calcular(operador) {
-            const num1 = Number(document.getElementById("num1").value);
-            const num2 = Number(document.getElementById("num2").value);
+        function teste_unitario() {
             
-            let resultado;
+            const operacoes = ["soma","subtracao","dividir","multiplicacao"];
+            document.getElementById("num1").value = 15;
+            document.getElementById("num2").value = 45;
+            const li = document.createElement("li") ;
+                        
+            for (let i = 0; i <= 3; i++) {
+                
+                testev = calcular(operacoes[i])
 
-            if (operador === 'soma') {
-                resultado = num1 + num2;
-            } else if (operador === 'subtracao') {
-                resultado = num1 - num2;
-            } else if (operador === 'dividir'){
-                resultado = num1 / num2;
-            } else if (operador === 'multiplicacao'){
-                resultado = num1 * num2 ;
-            } else{
-                resultado = "Operação inválida.";
+                adicionar(testev,operacoes[i])
             }
 
-            document.getElementById("resultado").innerHTML = "Resultado: " + resultado;
+            function adicionar(teste,operacao){
+                const li = document.createElement("li") ;
+                    li.textContent = "Resultado teste de "+operacao+" = "+ teste;
+                    lista.appendChild(li); 
+                    li.style = "color:green"
+                return
+            }
+            document.getElementById("num1").value = "";
+            document.getElementById("num2").value = "";
+            document.getElementById("resultado").value = "";
         }
+
+        
+        function calcular(operador) {
+            const num1 = parseFloat(document.getElementById("num1").value);
+            const num2 = parseFloat(document.getElementById("num2").value);
+            
+            let resultadov;
+
+            if (operador === 'soma') {
+                resultadov = num1 + num2;
+            } else if (operador === 'subtracao') {
+                resultadov = num1 - num2;
+            } else if (operador === 'dividir'){
+                resultadov = num1 / num2;
+            } else if (operador === 'multiplicacao'){
+                resultadov = num1 * num2 ;
+            } else{
+                resultadov = "Operação inválida.";
+            }
+
+            document.getElementById("resultado").innerHTML = "Resultado: " + resultadov;
+            
+            return resultadov
+        }
+
+       
     </script>
 </head>
 
@@ -61,6 +91,12 @@
         <tr>
             <td>
                 <div id="resultado" ><p>Resultado aparecerá aqui.</p></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button id="teste" onclick="teste_unitario()">Teste</button>
+                <ul id="lista"><p>Resultado do teste aparecerá aqui.</p></ul>
             </td>
         </tr>
         </div>
