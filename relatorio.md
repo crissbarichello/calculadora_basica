@@ -3,7 +3,7 @@
 ## Relatório de Falha – 01
 - **ID da Falha:** BUG-INI-001
 - **Título:** [BUG] Calculadora aceita texto e concatena valores na soma
-- **Data / Hora:** 06/05/2026 – 19:40
+- **Data / Hora:** 06/05/2026 – 20:20
 - **Reportado por:** Cristiano Barichello
 - **Ambiente:** Navegador Desktop / HTML + JavaScript / Ambiente Local
 - **Descrição da Falha:**
@@ -26,7 +26,7 @@
 ## Relatório de Falha – 02
 - **ID da Falha:** BUG-INI-002
 - **Título:** [BUG] Campos numéricos da calculadora utilizam type="text"
-- **Data / Hora:** 06/05/2026 – 19:42
+- **Data / Hora:** 06/05/2026 – 21:15
 - **Reportado por:** Cristiano Barichello
 - **Ambiente:** Navegador Desktop / HTML
 - **Descrição da Falha:**
@@ -48,7 +48,7 @@
 ## Relatório de Falha – 03
 - **ID da Falha:** BUG-INI-003
 - **Título:** [BUG] Divisão por zero não é tratada
-- **Data / Hora:** 06/05/2026 – 19:44
+- **Data / Hora:** 06/05/2026 – 21:35
 - **Reportado por:** Cristiano Barichello
 - **Descrição da Falha:**
   - A aplicação permite divisão por zero sem qualquer tratamento ou mensagem de erro.
@@ -69,7 +69,7 @@
 ## Relatório de Falha – 04
 - **ID da Falha:** BUG-INI-004
 - **Título:** [BUG] Senha exibida e armazenada em texto puro
-- **Data / Hora:** 06/05/2026 – 19:46
+- **Data / Hora:** 06/05/2026 – 21:39
 - **Reportado por:** Cristiano Barichello
 - **Descrição da Falha:**
   - O campo de senha está configurado como type="text" e a senha é exibida em alerta e registrada no console.
@@ -91,7 +91,7 @@
 ## Relatório de Falha – 05
 - **ID da Falha:** BUG-INI-005
 - **Título:** [BUG] Uso de elemento HTML obsoleto `<marquee>`
-- **Data / Hora:** 06/05/2026 – 19:48
+- **Data / Hora:** 06/05/2026 – 21:50
 - **Reportado por:** Cristiano Barichello
 - **Descrição da Falha:**
   - O código utiliza a tag `<marquee>`, que é obsoleta e não recomendada pelos padrões atuais da web.
