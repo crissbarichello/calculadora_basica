@@ -5,13 +5,14 @@
     <title>Calculadora</title>
     <script>
         function teste_unitario() {
+            debugger
             
-            const operacoes = ["soma","subtracao","dividir","multiplicacao"];
+            const operacoes = ["soma","subtracao","dividir","multiplicacao","porcentagem"];
             document.getElementById("resultado").value = "";
             document.getElementById("num1").value = 15;
             document.getElementById("num2").value = 45
 
-            for (let i = 0; i <= 3; i++) {
+            for (let i = 0; i <= 4; i++) {
                 
                 testev = calcular(operacoes[i])
 
@@ -24,10 +25,11 @@
         }
 
         function adicionar(teste,operacao){
+            debugger
                 const li = document.createElement("li") ;
                     li.textContent = operacao +" = "+ teste;
                     lista.appendChild(li); 
-                    li.style = "color:green"
+                    //li.style = "color:green"
                    
                 return    
             }
@@ -71,6 +73,7 @@
                 { n1: 5,  n2: 2,  op: "subtracao", resultado: 3 },
                 { n1: 4,  n2: 3,  op: "multiplicacao", resultado: 12 },
                 { n1: 10, n2: 2,  op: "dividir", resultado: 5 },
+                { n1: 20, n2: 10, op: "porcentagem", resultado: 2},
                 { n1: 10, n2: 0,  op: "dividir", resultado: "Erro" },
                 { n1: "", n2: 2,  op: "soma", resultado: "Erro" }
             ];
@@ -104,23 +107,58 @@
             const num1 = parseFloat(document.getElementById("num1").value);
             const num2 = parseFloat(document.getElementById("num2").value);
             
-            let resultadov;
+            let resultadov = "";
 
             if (operador === 'soma') {
                 resultadov = num1 + num2;
+                document.getElementById("resultado").innerHTML = "Resultado: " + resultadov;
+                
             } else if (operador === 'subtracao') {
                 resultadov = num1 - num2;
+                document.getElementById("resultado").innerHTML = "Resultado: " + resultadov;
+                
             } else if (operador === 'dividir'){
                 resultadov = num1 / num2;
+                document.getElementById("resultado").innerHTML = "Resultado: " + resultadov;
+                
             } else if (operador === 'multiplicacao'){
                 resultadov = num1 * num2 ;
+                document.getElementById("resultado").innerHTML = "Resultado: " + resultadov;
+        
+            } else if (operador === 'porcentagem'){
+                resultadov = ((num1 / 100) * num2);
+                document.getElementById("resultado").innerHTML = "Resultado: " + resultadov;
+                
             } else{
                 resultadov = "Operação inválida.";
+                
             }
 
-            document.getElementById("resultado").innerHTML = "Resultado: " + resultadov;
+            let historico = JSON.parse(localStorage.getItem("historico")) || [];
             
+                historico.push({
+                num1: num1,
+                num2: num2,
+                operador: operador,
+                resultadov: resultadov
+            })
+
+
+            localStorage.setItem("historico", JSON.stringify(historico));   
             return resultadov
+        }
+
+        function verHistorico() {
+            let historico = JSON.parse(localStorage.getItem("historico")) || [];
+            let lista = document.getElementById("historico");
+
+            lista.innerHTML = "";
+
+            historico.forEach((item) => {
+                let li = document.createElement("li");
+                li.textContent = item;
+                lista.appendChild(li);
+            });
         }
 
        
@@ -155,11 +193,19 @@
                 <button id="subtrair" onclick="calcular('subtracao')">Subtrair</button>
                 <button id="dividir" onclick="calcular('dividir')">Dividir</button>
                 <button id="multiplicacao" onclick="calcular('multiplicacao')">Multiplicação</button>
+                <button id="porcentagem" onclick="calcular('porcentagem')">Porcentagem</button>
+
             </td>                
         </tr>
         <tr>
             <td>
                 <div id="resultado" ><p>Resultado aparecerá aqui.</p></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="verHistorico()">Ver histórico</button>
+                <ul id="historico"></ul>
             </td>
         </tr>
         <tr>
